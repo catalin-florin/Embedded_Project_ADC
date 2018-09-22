@@ -2,6 +2,8 @@
 
 using namespace std;
 
+#define SYSTEM_VOLTAGE 17
+#define RESOLUTION 1023
 
 int ADC_Vector[8] = {0,0,0,0,0,0,0,0};
 int buffer[8] = {1023,511,200,450,0,100,900,750};
@@ -25,7 +27,7 @@ void ADC_GetChannelValue ()
 
 for(int i=0;i<8;i++)
    {
-       ADC_Vector[i]=(buffer[i]/51)*100;
+       ADC_Vector[i] = (SYSTEM_VOLTAGE * buffer[i]) / RESOLUTION;    /* (System_Voltage * ADC_Read) / Resolution */
    }
 }
 
